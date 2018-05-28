@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/statistics.css">
+</head>
+<body onload="loadPopUp('.welcome-popup');">
+<div class="navbar area">
+    <div class="logo"></div>
+    <div class="record">
+        <span class="value current-player"></span>
+        <span class="label">Current Player</span>
+    </div>
+    <!--<div class="record">-->
+    <!--<span class="value active-action">NONE</span>-->
+    <!--<span class="label">Active Action</span>-->
+    <!--</div>-->
+    <div class="record">
+        <span class="value turn-number">0</span>
+        <span class="label">Turn Number</span>
+    </div>
+    <div class="game-time record">
+        <span class="value">
+            <span class="game-minutes">00</span>:
+            <span class="game-seconds">00</span>
+        </span>
+        <span class="label">Game Time</span>
+    </div>
+    <div class="turn-time record">
+        <span class="value">
+            <span class="turn-minutes">00</span>:
+            <span class="turn-seconds">00</span>
+        </span>
+        <span class="label">Turn Time</span>
+    </div>
+    <div class="buttons">
+        <button name="abortGame" class="btn" onclick="loadPopUp('.end-game-popup');">
+            Abort Game
+        </button>
+    </div>
+</div>
+<div class="separator"></div>
+<div class="loader">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+</div>
+<div class="board area player">
+    <div class="hand bot-hand area cards-container"></div>
+    <div class="deck area">
+        <div class="discard-pile">
+        </div>
+        <div class="draw-pile">
+        </div>
+    </div>
+    <div class="hand human-hand player cards-container"></div>
+
+</div>
+<div class="console">
+    <div>Loading Game...</div>
+</div>
+<div class="overlay"></div>
+<div class="transparent-overlay"></div>
+<div class="popups">
+    <div class="popup welcome-popup">
+        <div class="welcome-popup-headline">
+            <h2>WELCOME TO OUR</h2>
+            <h3>TAKI GAME</h3>
+        </div>
+        <div class="welcome-popup-buttons-area">
+            <button name="start-new-game" class="btn start-new-game" onclick="startNewGame();">Start New Game
+            </button>
+            <button name="exit-game" class="btn exit-game" onclick="exitGame();">EXIT</button>
+        </div>
+    </div>
+    <div class="popup choose-color-popup">
+        <h3>please choose your color:</h3>
+        <div class="choose-color-popup-buttons-area">
+            <button name="red" class="btn red" onclick="change2Color(ColorEnum.Red);"></button>
+            <button name="blue" class="btn blue" onclick="change2Color(ColorEnum.Blue);"></button>
+            <button name="yellow" class="btn yellow" onclick="change2Color(ColorEnum.Yellow);"></button>
+            <button name="green" class="btn green" onclick="change2Color(ColorEnum.Green);"></button>
+        </div>
+    </div>
+    <div class="popup end-game-popup">
+        <div class="end-game-popup headline"> Are you sure you want to end the game ?</div>
+        <div class="end-game-popup-buttons-area">
+            <button name="end-game-yes-button" class="btn end-game-yes-button"
+                    onclick="declareTechnicalWinner();">YES
+            </button>
+            <button name="end-game-no-button" class="btn end-game-no-button"
+                    onclick="dropPopUp('.end-game-popup');">NO
+            </button>
+        </div>
+    </div>
+    <div class="popup winner-popup">
+        <div class="winner-popup-headline">
+            <h3> GAME OVER</h3>
+        </div>
+        <h2 class="winner-popup-body"><span id="winner-name"></span> player won the game !!!</h2>
+        <div class="stats-placeholder"></div>
+        <div class="winner-popup-buttons-area">
+            <button name="start-new-game" class="btn start-new-game" onclick="startNewGame();">Start New Game
+            </button>
+            <button name="exit-game" class="btn exit-game" onclick="exitGame();">EXIT</button>
+        </div>
+    </div>
+    <div class="popup technical-winner-popup">
+        <div class="technical-winner-popup-headline">GAME ABORTED</div>
+        <div class="technical-winner-popup-body"> Human player aborted the game.<br \> Bot player won the game !!!</div>
+        <div class="statistics-title">Statistics:</div>
+        <div class="stats-placeholder"></div>
+        <div class="technical-winner-popup-buttons-area">
+            <button name="start-new-game" class="btn start-new-game" onclick="startNewGame();">Start a new game
+            </button>
+            <button name="exit-game" class="btn exit-game" onclick="exitGame();">EXIT</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/enums.js"></script>
+<script src="js/utils/model.utils.js"></script>
+<script src="js/utils/dom.utils.js"></script>
+<script src="js/state.js"></script>
+<script src="js/objects/card.object.js"></script>
+<script src="js/objects/pile.object.js"></script>
+<script src="js/objects/player.object.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

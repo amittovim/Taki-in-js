@@ -1,0 +1,12 @@
+.statistics-title {
+    color: yellow;
+}
+
+.stats-placeholder .label {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.stats-placeholder .value {
+    color: yellow;
+}
